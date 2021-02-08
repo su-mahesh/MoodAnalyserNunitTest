@@ -28,11 +28,16 @@ namespace MoodAnalyserNUnitTest
         }
 
         [Test]
-        public void GivenMessage_WhenNull_ShouldReturnHappy()
+        public void GivenMessage_WhenNull_UsingCustomException_ShouldReturnNullMood()
         {
             moodAnalyser = new MoodAnalyser();
-            string Message = moodAnalyser.AnalyseMood();
-            Assert.AreEqual("HAPPY", Message);
+            try {
+                string Message = moodAnalyser.AnalyseMood();
+            }
+            catch (MoodAnalyserException exception)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.NULL_MOOD, exception.exceptionType);
+            }                      
         }
     }
 }

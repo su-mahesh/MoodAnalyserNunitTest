@@ -15,7 +15,7 @@ namespace MoodAnalyserSpace
             this.Message = Message;
         }
 
-        public string AnalyseMood()
+        public string AnalyseMood() 
         {
             try
             {
@@ -23,8 +23,8 @@ namespace MoodAnalyserSpace
                     return "SAD";
                 else return "HAPPY";
             }
-            catch (NullReferenceException) {
-                return "HAPPY";
+            catch(NullReferenceException ) {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MOOD, "Mood should not be null");
             }
            
         }
