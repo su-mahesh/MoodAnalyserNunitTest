@@ -15,19 +15,18 @@ namespace MoodAnalyserSpace
             this.Message = Message;
         }
 
-        public string AnalyseMood() 
+        public string AnalyseMood()
         {
-            try
-            {
-                if (Message.ToLower().Contains("sad"))
+                if (Message == null)
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MOOD, "Mood should not be null");
+                else if (Message.ToLower().Contains("sad"))
                     return "SAD";
-                else return "HAPPY";
-            }
-            catch(NullReferenceException ) {
-                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MOOD, "Mood should not be null");
-            }
-           
+                else if (Message.Length == 0)
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EMPTY_MOOD, "Mood should not be empty");
+
+                else return "HAPPY"; 
         }
+
         static void Main(string[] args)
         {
           
