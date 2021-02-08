@@ -18,5 +18,11 @@ namespace MoodAnalyserNUnitTest
             Assert.AreEqual("SAD", message);
         }
 
+        [Test]
+        public void GivenMessage_WhenHappy_ShouldReturnHappy()
+        {
+            string message = moodAnalyser.AnalyseMood("HAPPY");
+            Assert.AreEqual("HAPPY", message);
+        }
     }
 }
