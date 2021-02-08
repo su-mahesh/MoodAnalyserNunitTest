@@ -15,17 +15,24 @@ namespace MoodAnalyserNUnitTest
         public void GivenMessage_WhenSad_ShouldReturnSad()
         {
             moodAnalyser = new MoodAnalyser("SAD");
-            string message = moodAnalyser.AnalyseMood();
-            Assert.AreEqual("SAD", message);
+            string Message = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("SAD", Message);
         }
 
         [Test]
         public void GivenMessage_WhenHappy_ShouldReturnHappy()
         {
             moodAnalyser = new MoodAnalyser("HAPPY");
-            string message = moodAnalyser.AnalyseMood();
-            Assert.AreEqual("HAPPY", message);
+            string Message = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("HAPPY", Message);
         }
 
+        [Test]
+        public void GivenMessage_WhenNull_ShouldReturnHappy()
+        {
+            moodAnalyser = new MoodAnalyser();
+            string Message = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("HAPPY", Message);
+        }
     }
 }
