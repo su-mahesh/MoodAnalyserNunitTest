@@ -78,7 +78,7 @@ namespace MoodAnalyserNUnitTest
         {
             try
             {
-                object result = MoodAnalyserFactory.GetMoodAnalyserObject("MoodAnalyserNameSpace.MoodAnalyser", "MoodAnalyse");
+                object result = MoodAnalyserFactory.GetMoodAnalyserObject("MoodAnalyserNameSpace.MoodAnalyser", "MoodAnalys");
             }
             catch (MoodAnalyserException exception)
             {
