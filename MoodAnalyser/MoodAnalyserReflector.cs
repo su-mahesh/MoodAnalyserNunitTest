@@ -70,7 +70,11 @@ namespace MoodAnalyserNameSpace
             {
                 MoodAnalyser moodAnalyser = new MoodAnalyser();
                 Type type = typeof(MoodAnalyser);
-                FieldInfo Field = type.GetField(FieldName, BindingFlags.Public | BindingFlags.Instance);
+                if (Message == null)
+                {
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MOOD, "Mood should not be null");
+                }
+                FieldInfo Field = type.GetField(FieldName, BindingFlags.Public | BindingFlags.Instance);               
                 Field.SetValue(moodAnalyser, Message);
                 return moodAnalyser.Message;
             }
