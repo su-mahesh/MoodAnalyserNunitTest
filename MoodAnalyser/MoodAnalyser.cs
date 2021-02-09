@@ -5,7 +5,7 @@ namespace MoodAnalyserNameSpace
 {
     public class MoodAnalyser
     {
-        string Message;
+        public string Message;
 
         public MoodAnalyser()
         {
@@ -13,7 +13,7 @@ namespace MoodAnalyserNameSpace
 
         public MoodAnalyser(string Message)
         {
-            this.Message = Message;
+            this.Message = Message.ToUpper();
         }
 
         public string AnalyseMood()

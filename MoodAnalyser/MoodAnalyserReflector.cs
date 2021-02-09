@@ -63,5 +63,14 @@ namespace MoodAnalyserNameSpace
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NO_SUCH_METHOD, "constructor not found");
             }
         }
+
+        public static string SetField(string Message, string FieldName)
+        {
+            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            Type type = typeof(MoodAnalyser);
+            FieldInfo Field = type.GetField(FieldName, BindingFlags.Public | BindingFlags.Instance);
+            Field.SetValue(moodAnalyser, Message);
+            return moodAnalyser.Message;
+        }
     }   
 }

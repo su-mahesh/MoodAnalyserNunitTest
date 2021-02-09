@@ -139,5 +139,13 @@ namespace MoodAnalyserNUnitTest
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.NO_SUCH_METHOD, exception.exceptionType);
             }
         }
+
+        [Test]
+        public void GivenMessage_WhenSetField_UsingReftlection_ShouldReturnHappy()
+        {
+            string message = MoodAnalyserReflector.SetField("Happy", "Message");
+            Assert.AreEqual("Happy", message);
+        }
+
     }
 }
