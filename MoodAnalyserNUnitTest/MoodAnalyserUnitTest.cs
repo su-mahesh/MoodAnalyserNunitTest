@@ -123,9 +123,21 @@ namespace MoodAnalyserNUnitTest
         [Test]
         public void GivenMessage_WhenHappy_UsingReflection_ShouldReturnHappy()
         {
-            //moodAnalyser = new MoodAnalyser("I am in Happy Mood");
             string message = MoodAnalyserReflector.InvokeAnalyseMood("I am in Happy Mood", "AnalyseMood");
             Assert.AreEqual("HAPPY", message);
+        }
+
+        [Test]
+        public void GivenMessage_WhenImproperMethodName_UsingReflection_ShouldThrowMoodAnalysisException()
+        {           
+            try
+            {
+                string message = MoodAnalyserReflector.InvokeAnalyseMood("I am in Happy Mood", "Analyse");
+            }
+            catch (MoodAnalyserException exception)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.NO_SUCH_METHOD, exception.exceptionType);
+            }
         }
     }
 }
