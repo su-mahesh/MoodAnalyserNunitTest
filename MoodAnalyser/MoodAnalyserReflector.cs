@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace MoodAnalyserNameSpace
 {
-    public class MoodAnalyserFactory
+    public class MoodAnalyserReflector
     {
         public static object GetMoodAnalyserObject(string ClassName, string ConstructorName)
         {
@@ -46,6 +46,22 @@ namespace MoodAnalyserNameSpace
             }
             else          
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NO_SUCH_CLASS, "class not found");
+        }
+
+        public static string InvokeAnalyseMood(string Message, string MethodName)
+        {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyserNameSpace.MoodAnalyser");
+                object MoodAnalyserObject = GetMoodAnalyserObjectWithParamterizedConstructor("MoodAnalyserNameSpace.MoodAnalyser", "MoodAnalyser", Message);
+                MethodInfo AnalyseMoodInfo = type.GetMethod(MethodName);
+                object mood = AnalyseMoodInfo.Invoke(MoodAnalyserObject, null);
+                return mood.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NO_SUCH_METHOD, "constructor not found");
+            }
         }
     }   
 }
