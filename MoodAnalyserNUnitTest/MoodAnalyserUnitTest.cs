@@ -147,5 +147,17 @@ namespace MoodAnalyserNUnitTest
             Assert.AreEqual("Happy", message);
         }
 
+        [Test]
+        public void GivenMessage_WhenImproperFieldName_UsingReftlection_ShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                string message = MoodAnalyserReflector.SetField("Happy", "Mess");
+            }
+            catch (MoodAnalyserException exception)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.NO_SUCH_FIELD, exception.exceptionType);
+            }
+        }
     }
 }

@@ -66,11 +66,18 @@ namespace MoodAnalyserNameSpace
 
         public static string SetField(string Message, string FieldName)
         {
-            MoodAnalyser moodAnalyser = new MoodAnalyser();
-            Type type = typeof(MoodAnalyser);
-            FieldInfo Field = type.GetField(FieldName, BindingFlags.Public | BindingFlags.Instance);
-            Field.SetValue(moodAnalyser, Message);
-            return moodAnalyser.Message;
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser();
+                Type type = typeof(MoodAnalyser);
+                FieldInfo Field = type.GetField(FieldName, BindingFlags.Public | BindingFlags.Instance);
+                Field.SetValue(moodAnalyser, Message);
+                return moodAnalyser.Message;
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NO_SUCH_FIELD, "field not found");
+            }
         }
     }   
 }
