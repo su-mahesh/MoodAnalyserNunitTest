@@ -85,5 +85,14 @@ namespace MoodAnalyserNUnitTest
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.NO_SUCH_METHOD, exception.exceptionType);
             }
         }
+
+        [Test]
+        public void GivenMoodAnalyserClassNameWithParametrizedConstructor_WhenProper_ShouldReturnMoodAnalyserObject()
+        {
+            object expected = new MoodAnalyser("HAPPY");
+            object result = MoodAnalyserFactory.GetMoodAnalyserObjectWithParamterizedConstructor("MoodAnalyserNameSpace.MoodAnalyser", "MoodAnalyser", "HAPPY");
+            expected.Equals(result);
+        }
+
     }
 }
