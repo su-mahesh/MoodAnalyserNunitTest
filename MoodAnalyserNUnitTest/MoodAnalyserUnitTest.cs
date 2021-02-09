@@ -54,11 +54,24 @@ namespace MoodAnalyserNUnitTest
             }
         }
         [Test]
-        public void GivenMoodAnalyserClassName_ShouldReturnMoodAnalyserObject()
+        public void GivenMoodAnalyserClassName_WhenProper_ShouldReturnMoodAnalyserObject()
         {
             object expected = new MoodAnalyser();
             object result = MoodAnalyserFactory.GetMoodAnalyserObject("MoodAnalyserNameSpace.MoodAnalyser", "MoodAnalyser");
             expected.Equals(result);
+        }
+
+        [Test]
+        public void GivenMoodAnalyserClassName_WhenImproper_ShouldThrowMoodAnalysisException()
+        {
+            try
+            {
+                object result = MoodAnalyserFactory.GetMoodAnalyserObject("MoodAnalyserNameSpace.MoodAnalyse", "MoodAnalyser");
+            }
+            catch(MoodAnalyserException exception)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.NO_SUCH_CLASS, exception.exceptionType);
+            }
         }
     }
 }

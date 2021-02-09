@@ -10,7 +10,7 @@ namespace MoodAnalyserNameSpace
         {
             EMPTY_MOOD,
             NULL_MOOD,
-            NO_SUCH_METhOD
+            NO_SUCH_CLASS
         }
 
         public ExceptionType exceptionType;
