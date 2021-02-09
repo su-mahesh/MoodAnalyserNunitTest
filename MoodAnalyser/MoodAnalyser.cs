@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Reflection;
 
-namespace MoodAnalyserSpace
+namespace MoodAnalyserNameSpace
 {
     public class MoodAnalyser
     {
@@ -29,9 +30,9 @@ namespace MoodAnalyserSpace
             { throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MOOD, "Mood should not be null"); }
                 
         }
-
         static void Main(string[] args)
         {
+
           
         }
     }

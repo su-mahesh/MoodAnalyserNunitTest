@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using MoodAnalyserSpace;
+using MoodAnalyserNameSpace;
 namespace MoodAnalyserNUnitTest
 {
     public class Tests
@@ -52,6 +52,13 @@ namespace MoodAnalyserNUnitTest
             {
                 Assert.AreEqual(MoodAnalyserException.ExceptionType.EMPTY_MOOD, exception.exceptionType);
             }
+        }
+        [Test]
+        public void GivenMoodAnalyserClassName_ShouldReturnMoodAnalyserObject()
+        {
+            object expected = new MoodAnalyser();
+            object result = MoodAnalyserFactory.GetMoodAnalyserObject("MoodAnalyserNameSpace.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(result);
         }
     }
 }

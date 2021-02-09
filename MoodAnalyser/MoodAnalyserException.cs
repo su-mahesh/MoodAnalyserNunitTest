@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoodAnalyserSpace
+namespace MoodAnalyserNameSpace
 {
     public class MoodAnalyserException : Exception
     {
         public enum ExceptionType
         {
-            EMPTY_MOOD, NULL_MOOD
+            EMPTY_MOOD,
+            NULL_MOOD,
+            NO_SUCH_METhOD
         }
 
         public ExceptionType exceptionType;
